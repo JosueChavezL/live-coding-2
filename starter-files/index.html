@@ -17,7 +17,7 @@
             <div class="clouds"></div>
 
             <div class="interaction__container">
-                <input id="input" class="input" type="text" onkeypress="handleKeyEnter(event)" value="" required />
+                <input id="input" class="input" type="text" value="" required />
                 <span class="input__bar"></span>
                 <label>Ask Your Question</label>
                 <p id="error" class="error"></p>
@@ -27,8 +27,8 @@
                 Get Answer
             </button>
 
-            <div id="ball" class="ball">
-                <div class="ball__response">
+            <div id="ball" class="ball" >
+                <div class="ball__response" animation-name="shake">
                     <div class="ball__triangle"></div>
                     <div id="answer" class="ball__answer"></div>
                 </div>

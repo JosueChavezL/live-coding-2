@@ -1,13 +1,39 @@
 // API
 const API_ENDPOINT = 'https://yesno.wtf/api';
+let btnAnswer = document.getElementById("button");
+let pregunta = document.getElementById("input");
+let answer = document.getElementById("answer");
 
-/**
- * STEPS:
- *
- * 1. Create a fetchAnswer function and call the API
- * 2. Output the API's response
- * 3. Attach fetchAnswer to an event listener
- * 4. Clear output after 3 seconds
- * 5. Optional: add loading/error states
- *
- */
+btnAnswer.addEventListener("click", function(e){
+
+    if(pregunta.value.length > 0 && pregunta.value != ""){
+        
+        getData();
+
+        setTimeout(() => {pregunta.value = "", answer.innerHTML = ""
+
+            }, 5000);
+    }
+ 
+}); 
+
+
+
+const getData = () => {
+    let promesa = fetch(API_ENDPOINT, {
+        method : "GET"
+    });
+    promesa.then((response) => {
+        response.json().then ((data) => {
+            console.log(data);
+        answer.innerHTML = data.answer; 
+
+        }).catch((error) => {
+            console.error("Problema con la respuesta "+ error);
+        });
+    }).catch((error) => {
+        console.log("Error en la solicitud: " + error);
+    });
+}//get data
+
+
